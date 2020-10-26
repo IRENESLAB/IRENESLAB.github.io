@@ -12,12 +12,24 @@
           <h4 class="card-title">{{dataItem.name}}</h4>
           <h5 class="card-title">{{dataItem.text}}</h5>
           <p class="card-text">{{dataItem.purchasePrice}}</p>
-          <p class="card-text">{{dataItem.bookId}}</p>
-          <p class="card-text">{{dataItem.id}}</p>
+          <p class="card-text" hidden>{{dataItem.bookId}}</p>
+          <p class="card-text" hidden>{{dataItem.id}}</p>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary" (click)="subscribeBook(dataItem)"  >{{dataItem.isActive}}</button>
+          <button class="btn btn-primary"  (click)="subscribeBook(dataItem)"  >{{dataItem.isActive ? "Subscribe" : "Unsubscribe"}}</button>
         </div>
       </div>
     </div>  
     </div>
+
+<script>
+    var classApp = angular.module('classApp', []);
+
+classApp.controller('classCtrl', function ($scope) {
+	$scope.isActive = false;
+  $scope.activeButton = function() {
+    $scope.isActive = !$scope.isActive;
+  }  
+});
+
+</script>

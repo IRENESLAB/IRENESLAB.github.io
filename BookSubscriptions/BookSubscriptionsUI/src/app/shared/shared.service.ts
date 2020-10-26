@@ -34,12 +34,12 @@ return this.http.get<any>(this.APIURL + '/Book');
 addBook(val:any)
 {
   debugger
-return this.http.post(this.APIURL + '/Book/' , val);
+return this.http.post(this.APIURL + '/Book' , val);
 }
 updateBook(val:any)
 {
   debugger
-return this.http.put(this.APIURL + '/Book/' , val);
+return this.http.put(this.APIURL + '/Book' , val);
 }
 deleteBook(val:any)
 {

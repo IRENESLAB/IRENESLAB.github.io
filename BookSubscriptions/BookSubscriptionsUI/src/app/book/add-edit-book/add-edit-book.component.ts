@@ -31,6 +31,7 @@ this.PurchasePrice = this.book.PurchasePrice;
       Text: this.Text,
       PurchasePrice: this.PurchasePrice
     }
+    
     debugger
     this.service.addBook(book).subscribe(b=>{
  

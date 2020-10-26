@@ -42,6 +42,7 @@ namespace AuthWebAPI.Controllers
                     user.FullName,
                     user.Email,
                     user.UserName,
+                    
                     user.Id
                 };
             }

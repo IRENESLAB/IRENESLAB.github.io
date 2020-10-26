@@ -15,7 +15,7 @@ namespace AuthWebAPI.Models
         {
             get
             {
-                return string.Concat(FirstName, LastName);
+                return string.Concat(FirstName, " ", LastName);
             }
         }
     }

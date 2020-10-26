@@ -65,7 +65,7 @@ namespace BookSubscriptions.Controllers
         {
             try
             {
-                DataTable dt = ConnectAndGetData.Execute(Constants.sp_Book_Delete, new SqlParameter[] { new SqlParameter() { ParameterName = Constants.Id, Value = id }, new SqlParameter() { ParameterName = Constants.UpdatedBy, Value = 0 } });
+                DataTable dt = ConnectAndGetData.Execute(Constants.sp_Book_Delete, new SqlParameter[] { new SqlParameter() { ParameterName = Constants.Id, Value = id } });
                 return string.Format(Constants.Delete, Constants.Successful);
             }
             catch (Exception ex)
