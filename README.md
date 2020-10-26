@@ -4,8 +4,10 @@ IRENESLAB
 --login web api
 IRENESLAB.github.io/AuthWebAPI
 
+
 --subscription web api allowing logged in user to subscribe to one to many books in catelog
 IRENESLAB.github.io/WebAPI
+
 
 --models and data helper classes
 IRENESLAB.github.io/Entities
