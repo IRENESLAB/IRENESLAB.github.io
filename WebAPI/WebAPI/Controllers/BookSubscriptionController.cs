@@ -41,13 +41,21 @@ namespace WebAPI.Controllers
             return books_;
         }
         [HttpDelete("{id}")]
-        public async Task<IEnumerable<BookSubscriptionModel>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add(Constants.Id, id); 
+            try
+            {
+                var parameters = new DynamicParameters();
+            parameters.Add(Constants.Id, id);
 
-            return await _conn.QueryAsync<BookSubscriptionModel>(Constants.sp_UserBook_Delete, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
+                var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_UserBook_Delete, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
 
+                return Ok(bookId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); ;
+            }
         }
         [HttpPost()]
         public async Task<IActionResult> Post([FromBody] UserBook model)
@@ -58,6 +66,7 @@ namespace WebAPI.Controllers
                 var parameters = new DynamicParameters();
                 parameters.Add(Constants.UserId, model.UserId);
                 parameters.Add(Constants.BookId, model.BookId);
+                parameters.Add(Constants.IsActive, model.IsActive);
                 var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_UserBook_Insert, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
               
                 return Ok(bookId);
@@ -68,7 +77,7 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPut()]
-        public async Task<IActionResult> Put([FromBody] UserBook model)
+        public async Task<IActionResult> Put([FromBody] UserBookModel model)
         {
             try
             {

@@ -46,35 +46,13 @@ deleteBook(val:any)
   debugger
 return this.http.delete(this.APIURL + '/Book/'+ val);
 }
-getUsers():Observable<any[]>
-{
-return this.http.get<any>(this.APIURL + '/User');
-}
-addUser(val:any)
-{
-return this.http.post(this.APIURL + '/User' , val);
-}
-updateUser(val:any)
-{
-return this.http.put(this.APIURL + '/User' , val);
-}
-deleteUser(val:any)
-{
-return this.http.delete(this.APIURL + '/User/' + val);
-}
 
-UploadImage(val:any)
-{
-  return this.http.post(this.APIURL + '/User/SaveImage' , val);
-}
+
 selectBooks():Observable<any[]>
 {
 return this.http.get<any>(this.APIURL + '/Book/GetAllBooks');
 }
-selectUsers():Observable<any[]>
-{
-return this.http.get<any>(this.APIURL + '/User/GetAllUsers');
-}
+
 getUserSubscriptions():Observable<any[]>
 {
   return this.http.get<any>(this.APIURL + '/BookSubscription/GetAllUserSubscriptions');

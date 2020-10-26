@@ -7,15 +7,12 @@ using System.Web;
 
 namespace Entities.Models
 {
-    public class UserBook
+    public class UserBookModel
     {
 
-        [ForeignKey("UserId")]
-        public string UserId { get; set; }
-        [ForeignKey("BookId")]
-        public int BookId { get; set; }
-        
-        public bool IsActive { get; set; } 
+        [Key]
+        public int Id { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

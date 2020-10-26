@@ -53,15 +53,16 @@ this.BookList = data;
 
   subscribeBook(dataItem,isActive:boolean)
   {
-    var userBook={UserId : this.userDetails!=null ? this.userDetails.id : "", BookId : dataItem.bookId, Id: dataItem.id, IsActive: isActive}
+    
 debugger
     if(dataItem.id==0)
     {
+      var userBook={UserId : this.userDetails!=null ? this.userDetails.id : "", BookId : dataItem.bookId, Id: dataItem.id, IsActive: isActive}
        this.catelogService.addUserSubscription(userBook).subscribe(data=>
       {
         debugger
         this.userBook = data;
-        this.toastr.info(dataItem.name ? 'Book unsubscribed!' : 'Book unsubscribed!')
+        this.toastr.info(dataItem.name ,'Book subscribed!' )
         this.refreshBookList();
       }); 
      
@@ -78,12 +79,12 @@ debugger
   }
   private updateBookSubscription(dataItem, isActive)
   {
-    var userBook={UserId : this.userDetails!=null ? this.userDetails.id : "", BookId : dataItem.bookId, Id: dataItem.id, IsActive: isActive}
+    var userBook={Id: dataItem.id, IsActive: isActive}
     this.catelogService.updateUserSubscription(userBook).subscribe(data=>
       {
         debugger
         this.userBook = data;
-this.toastr.info(dataItem.name, isActive ? 'Book unsubscribed!' : 'Book unsubscribed!')
+this.toastr.info(dataItem.name, isActive ? 'Book subscribed!' : 'Book unsubscribed!')
 this.refreshBookList();
       });
 
