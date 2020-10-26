@@ -17,3 +17,4 @@ C:\Users\imaritz\Documents\GitHub\IRENESLAB.github.io\Entities\obj\Debug\netstan
 C:\Users\imaritz\Documents\GitHub\IRENESLAB.github.io\Entities\obj\Debug\netstandard2.0\Entities.csproj.CoreCompileInputs.cache
 C:\Users\imaritz\Documents\GitHub\IRENESLAB.github.io\Entities\obj\Debug\netstandard2.0\Entities.dll
 C:\Users\imaritz\Documents\GitHub\IRENESLAB.github.io\Entities\obj\Debug\netstandard2.0\Entities.pdb
+C:\Users\imaritz\Documents\GitHub\IRENESLAB.github.io\Entities\obj\Debug\netstandard2.0\Entities.csprojAssemblyReference.cache

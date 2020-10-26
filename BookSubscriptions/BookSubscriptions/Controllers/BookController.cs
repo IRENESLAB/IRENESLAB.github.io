@@ -20,6 +20,13 @@ namespace BookSubscriptions.Controllers
             DataTable dt = ConnectAndGetData.Execute(Constants.sp_Book_Get_All);
             return Request.CreateResponse(HttpStatusCode.OK, dt);
         }
+        [Route("api/Book/GetBook")]
+        [HttpGet]
+        public HttpResponseMessage GetBook(int id)
+        {
+            DataTable dt = ConnectAndGetData.Execute(Constants.sp_Book_Get_By_Id, new SqlParameter[] { new SqlParameter() { ParameterName = Constants.Id, Value = id } });
+            return Request.CreateResponse(HttpStatusCode.OK, dt);
+        }
         [Route("api/Book/GetAllBooks")]
         [HttpGet]
         public HttpResponseMessage GetAllBooks()
@@ -48,7 +55,7 @@ namespace BookSubscriptions.Controllers
             }
         }
         [HttpPut]
-        public string Put(BookModel book)
+        public string Put(Book book)
         {
             try
             {

@@ -28,18 +28,6 @@ this.BookList = data;
       });
   }
 
-  subscribeBook(id: any)
-    {
-      var bookSub = {
-        UserId: 7,
-        BookId: id,
-        IsActive: true
-      }
-
-this.service.addUserSubscription(bookSub).subscribe(data=>{
-  this.ResultMessage=data.toString();
-});
-    }
 
   
 }

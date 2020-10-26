@@ -71,23 +71,6 @@ selectUsers():Observable<any[]>
 {
 return this.http.get<any>(this.APIURL + '/User/GetAllUsers');
 }
-getUserSubscriptions():Observable<any[]>
-{
-  return this.http.get<any>(this.APIURL + '/BookSubscription/GetAllUserSubscriptions');
-
-}
-addUserSubscription(val:any)
-{
-  return this.http.post(this.APIURL + '/BookSubscription',val);
-}
-updateUserSubscription(val:any)
-{
-  return this.http.put(this.APIURL + '/BookSubscription',val);
-}
-deleteUserSubscription(val:any)
-{
-  return this.http.delete(this.APIURL + '/BookSubscription',val);
-}
-
+ 
 
 }
