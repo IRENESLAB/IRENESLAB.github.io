@@ -1,3 +1,5 @@
+
+<div class="container centre">
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>
@@ -7,15 +9,16 @@
   </nav>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">  <div class="col-md-6">
-        <div class="row">
+        <div class="container">
+
+        <form #form="ngForm" [formGroup]="service.loginFormModel" autocomplete="off" (submit)="onLogin(form)">
+                   <div class="row">
             <div class="col-md-12 my-auto side-header">
                 <img src="" alt="" class="mx-auto d-block">
                 <h1>User Login</h1>
                 <p><em>Please <strong>login</strong> to buy subscription</em></p>
             </div>
         </div>
-        <form #form="ngForm" [formGroup]="service.loginFormModel" autocomplete="off" (submit)="onLogin(form)">
-           
 
             <div class="form-group required">
                 <label>Email Address</label>
@@ -37,16 +40,19 @@
                 </div>
             </div>
         </form>
+    </div>
     </div></div>
-    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-profile-tab"> <div class="col-md-6">    
-        <div class="row">
-    <div class="col-md-12 my-auto side-header">
+    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-profile-tab"> <div class="col-md-6"> 
+        <div class="container">
+       
+        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onRegister()">    
+            <div class="row">
+ <div class="col-md-12 my-auto side-header">
         <img src="" alt="" class="mx-auto d-block">
         <h1>User Registration</h1>
         <p><em>Please <strong>register</strong> to buy subscription</em></p>
     </div>
     </div>
-        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onRegister()">
             <div class="form-group required">
                 <label>First Name</label>
                 <input class="form-control" formControlName="FirstName">            
@@ -86,6 +92,8 @@
                 </div>
             </div>
         </form>
+    </div>   
     </div></div> 
   </div> 
    
+</div>

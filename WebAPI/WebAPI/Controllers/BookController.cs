@@ -29,42 +29,67 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<Book>> Get()
         {
-            var books_ = await _conn.QueryAsync<Book>(Constants.sp_Book_Get_All); 
+            var books_ = await _conn.QueryAsync<Book>(Constants.sp_Book_Get_All);
             return books_;
         }
-        [HttpDelete("{id}")]
-        public async Task<IEnumerable<Book>> Delete(int id)
+        [Route("api/Book/GetBook")]
+        [HttpGet]
+        public async Task<IEnumerable<Book>> GetBook(int id)
         {
             var parameters = new DynamicParameters();
-            parameters.Add(Constants.Id,id);
-            parameters.Add(Constants.UpdatedBy, 0);
+            parameters.Add(Constants.Id, id);
 
-            return await _conn.QueryAsync<Book>(Constants.sp_Book_Delete, parameters, null,6000,System.Data.CommandType.StoredProcedure);
+            return await _conn.QueryAsync<Book>(Constants.sp_Book_Get_By_Id, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
 
         }
-        [HttpPost()]
-        public async Task<IActionResult> Post([FromBody] Book model)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                await _conn.OpenAsync(); 
-                var bookId= await _conn.ExecuteScalarAsync<int>(Constants.sp_Book_Insert, model); 
+                var parameters = new DynamicParameters();
+                parameters.Add(Constants.Id, id);
+
+                var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_Book_Delete, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
+
                 return Ok(bookId);
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); ;
+            }
+        }
+        [HttpPost()]
+        public async Task<IActionResult> Post([FromBody] BookModel model)
+        {
+            try
+            {
+                await _conn.OpenAsync();
+                var parameters = new DynamicParameters();
+                parameters.Add(Constants.Name, model.Name);
+                parameters.Add(Constants.Text, model.Text);
+                parameters.Add(Constants.PurchasePrice, model.PurchasePrice);
+                var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_Book_Insert, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
+
+                return Ok(bookId);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message); ;
             }
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Book model)
+        public async Task<IActionResult> Put(int id, [FromBody] BookModel model)
         {
             try
             {
                 await _conn.OpenAsync();
                 var parameters = new DynamicParameters();
                 parameters.Add(Constants.Id, id);
-                var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_Book_Insert, model);
+                parameters.Add(Constants.Name, model.Name);
+                parameters.Add(Constants.Text, model.Text);
+                parameters.Add(Constants.PurchasePrice, model.PurchasePrice);
+                var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_Book_Update, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
                 return Ok(bookId);
             }
             catch (Exception ex)
@@ -86,7 +111,7 @@ namespace WebAPI.Controllers
         {
             get
             {
-  
+
                 ConnectAndGetData connectAndGetData = new ConnectAndGetData(_configuration.GetConnectionString(Constants.ConnectionString));
 
                 return connectAndGetData;

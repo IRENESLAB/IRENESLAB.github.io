@@ -46,3 +46,9 @@
 .login-register-form-section .form-group {
     padding: 0 20px;
 }
+
+.centre {
+    margin: 50px;
+    width: 100%;
+    min-width: 300px;
+}

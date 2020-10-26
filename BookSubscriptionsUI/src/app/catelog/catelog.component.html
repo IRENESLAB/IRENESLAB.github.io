@@ -16,7 +16,7 @@
           <p class="card-text" hidden>{{dataItem.id}}</p>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary"  (click)="subscribeBook(dataItem)"  >{{dataItem.isActive ? "Subscribe" : "Unsubscribe"}}</button>
+          <button class="btn btn-primary"  (click)="subscribeBook(dataItem)"  >{{!dataItem.isActive ? "Subscribe" : "Unsubscribe"}}</button>
         </div>
       </div>
     </div>  

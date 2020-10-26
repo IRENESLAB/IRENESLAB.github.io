@@ -20,9 +20,9 @@ namespace WebAPI.Controllers
     {
         [Route("GetAllBookSubscriptions")]
         [HttpGet]
-        public async Task<IEnumerable<Book>> GetAllBooks()
+        public async Task<IEnumerable<BookSubscriptionModel>> GetAllBookSubscriptions()
         {
-            var books_ = await _conn.QueryAsync<Book>(Constants.sp_UserBook_Get_All);
+            var books_ = await _conn.QueryAsync<BookSubscriptionModel>(Constants.sp_UserBook_Get_All);
             return books_;
         }
         [Route("GetAllUserBookSubscriptions")]
@@ -35,22 +35,22 @@ namespace WebAPI.Controllers
             return books_;
         }
         [HttpGet]
-        public async Task<IEnumerable<Book>> Get()
+        public async Task<IEnumerable<BookSubscriptionModel>> Get()
         {
-            var books_ = await _conn.QueryAsync<Book>(Constants.sp_UserBook_Get_All);
+            var books_ = await _conn.QueryAsync<BookSubscriptionModel>(Constants.sp_UserBook_Get_All);
             return books_;
         }
         [HttpDelete("{id}")]
-        public async Task<IEnumerable<Book>> Delete(int id)
+        public async Task<IEnumerable<BookSubscriptionModel>> Delete(int id)
         {
             var parameters = new DynamicParameters();
             parameters.Add(Constants.Id, id); 
 
-            return await _conn.QueryAsync<Book>(Constants.sp_UserBook_Delete, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
+            return await _conn.QueryAsync<BookSubscriptionModel>(Constants.sp_UserBook_Delete, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
 
         }
         [HttpPost()]
-        public async Task<IActionResult> Post([FromBody] BookSubscriptionModel model)
+        public async Task<IActionResult> Post([FromBody] UserBook model)
         {
             try
             {
@@ -59,8 +59,8 @@ namespace WebAPI.Controllers
                 parameters.Add(Constants.UserId, model.UserId);
                 parameters.Add(Constants.BookId, model.BookId);
                 var bookId = await _conn.ExecuteScalarAsync<int>(Constants.sp_UserBook_Insert, parameters, null, 6000, System.Data.CommandType.StoredProcedure);
-                model.Id = bookId;
-                return Ok(model);
+              
+                return Ok(bookId);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPut()]
-        public async Task<IActionResult> Put([FromBody] BookSubscriptionModel model)
+        public async Task<IActionResult> Put([FromBody] UserBook model)
         {
             try
             {
