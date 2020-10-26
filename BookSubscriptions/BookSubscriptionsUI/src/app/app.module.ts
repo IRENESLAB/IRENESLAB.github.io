@@ -14,9 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home/home.component';
 import { CatelogComponent } from './catelog/catelog.component';
-import { BookComponent } from './book/book.component';
-import { ShowDelBookComponent } from './book/show-del-book/show-del-book.component';
-import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +21,7 @@ import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.compone
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CatelogComponent,
-    BookComponent,
-    ShowDelBookComponent,
-    AddEditBookComponent,
+    CatelogComponent
   ],
   imports: [
     BrowserModule,
