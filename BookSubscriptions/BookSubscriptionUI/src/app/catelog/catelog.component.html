@@ -1,0 +1,24 @@
+
+<div class="container"> 
+ 
+<h2>Product Catalog</h2>
+<p>register online and purchase a subscription to books listed in the online catalogue:</p>
+<div class="alert alert-light">
+  <strong>Result : </strong> {{ResultMessage}}
+</div>
+<div class="d-flex flex-wrap">
+  <div class="card" *ngFor="let dataItem of BookList">
+    <img class="card-img-top" src="http://localhost:50714/Images/book_image.jpg" alt="Book Image">
+    <div class="card-body">
+      <h4 class="card-title">{{dataItem.Name}}</h4>
+      <h5 class="card-title">{{dataItem.Text}}</h5>
+      <p class="card-text">{{dataItem.PurchasePrice}}</p>
+      <p class="card-text">{{dataItem.Id}}</p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" (click)="subscribeBook()">Subscribe</button>
+    
+    </div>
+  </div>
+</div>  
+</div>

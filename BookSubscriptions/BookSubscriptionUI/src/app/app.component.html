@@ -1,0 +1,27 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Book Subscription</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <button routerLink="catelog" class="m-1 btn btn-light btn-primary" >Home</button> 
+        </li>
+        <li class="nav-item">
+            <button routerLink="user" class="m-1 btn btn-light btn-primary" >Users</button> 
+        </li>
+        <li class="nav-item">
+            <button routerLink="book" class="m-1 btn btn-light btn-primary" >Books</button>
+        </li>
+      </ul>
+ 
+        <button routerLink="login" class="m-1 btn btn-light btn-primary" >Login</button> 
+        <button routerLink="register" class="m-1 btn btn-light btn-primary" >Register</button> 
+    </div>
+  </nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+

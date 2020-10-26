@@ -1,0 +1,24 @@
+ 
+    <div class="alert alert-light">
+        <strong>Result : </strong> {{ResultMessage}}
+      </div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+        <input type="Text" class="form-control" [(ngModel)]="FirstName" placeholder="First Name" />
+    </div>
+    <label class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+        <input type="Text" class="form-control" [(ngModel)]="LastName" placeholder="Last Name" />
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Email Address</label>
+    <div class="col-sm-10">
+        <input type="Text" class="form-control" [(ngModel)]="EmailAddress" placeholder="Email Address" />
+    </div>
+    
+    <button (click)="updateUser()" *ngIf="user.Id!=0" class="btn btn-primary">Update</button>
+    <button (click)="addUser()" *ngIf="user.Id==0" class="btn btn-primary">Add</button>
+    </div>
+    

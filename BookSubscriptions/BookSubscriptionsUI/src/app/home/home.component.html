@@ -1,0 +1,41 @@
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/catelog']">Book Subscriptions</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="userDetails">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/catelog']" >Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+            Admin
+           
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link" [routerLink]="['/user']">Users</a>
+            <div class="dropdown-divider"></div>
+            <a class="nav-link" [routerLink]="['/book']">Books</a>
+          </div>
+        </li>
+       
+      </ul>
+      <ul class="navbar-nav float-right">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+              Welcome {{userDetails.fullName}}
+           
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" [routerLink]="['/register']" (click)="logout()">Logout</a> 
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <app-catelog  ></app-catelog>

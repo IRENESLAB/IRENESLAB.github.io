@@ -1,0 +1,9 @@
+scr
+--app
+----user
+------usercomponent
+--------registercomponent
+
+----shared
+----app.module
+----app-routing

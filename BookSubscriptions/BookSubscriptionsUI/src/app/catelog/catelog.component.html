@@ -1,0 +1,23 @@
+<div class="jumbotron jumbotron">
+  <div class="container">
+    <h1 class="display-4">Product Catalog</h1>
+    <p class="lead">View, subscribe o or unsubscribe from books listed in the online catalogue</p>
+  </div>
+</div>
+<div class="container"> 
+    <div class="d-flex flex-wrap">
+      <div class="card" *ngFor="let dataItem of BookList">
+        <img class="card-img-top" src="/assets/images/book.jpg" alt="Book Image" >
+        <div class="card-body">
+          <h4 class="card-title">{{dataItem.name}}</h4>
+          <h5 class="card-title">{{dataItem.text}}</h5>
+          <p class="card-text">{{dataItem.purchasePrice}}</p>
+          <p class="card-text">{{dataItem.bookId}}</p>
+          <p class="card-text">{{dataItem.id}}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" (click)="subscribeBook(dataItem)"  >{{dataItem.isActive}}</button>
+        </div>
+      </div>
+    </div>  
+    </div>
